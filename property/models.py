@@ -5,7 +5,7 @@ from django.utils import timezone
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-
+    new_building = models.NullBooleanField('новостройка', db_index=True)
 
     description = models.TextField('Текст объявления', blank=True)
     price = models.IntegerField('Цена квартиры', db_index=True)
@@ -19,6 +19,7 @@ class Flat(models.Model):
         max_length=50,
         blank=True,
         help_text='Чертаново Южное')
+
     address = models.TextField(
         'Адрес квартиры',
         help_text='ул. Подольских курсантов д.5 кв.4')
