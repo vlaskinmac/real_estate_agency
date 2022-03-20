@@ -101,7 +101,7 @@ class Owner(models.Model):
         null=True,
         blank=True
     )
-    apartments_in_property = models.ManyToManyField(User, verbose_name='Квартиры в собственности', blank=True, db_index=True)
+    apartments_in_property = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', blank=True, related_name='owners')
 
     def __str__(self):
         return f'Собственник: {self.owner}'

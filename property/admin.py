@@ -20,6 +20,7 @@ class ClaimAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
+    list_display = ['owner', 'phone_number', 'normalaized_phone_number']
     raw_id_fields = ('apartments_in_property',)
 
 
