@@ -82,11 +82,12 @@ class Claim(models.Model):
         related_name='claims',
         verbose_name='Кто пожаловался'
     )
-    flat = models.ForeignKey(Flat,
-                             on_delete=models.CASCADE,
-                             related_name='claims',
-                             verbose_name='Квартира на которую пожаловались'
-                             )
+    flat = models.ForeignKey(
+        Flat,
+        on_delete=models.CASCADE,
+        related_name='claims',
+        verbose_name='Квартира на которую пожаловались'
+    )
     body = models.TextField(verbose_name='Текст жалобы')
 
     def __str__(self):
@@ -94,14 +95,28 @@ class Claim(models.Model):
 
 
 class Owner(models.Model):
-    owner = models.TextField(verbose_name='ФИО владельца', null=True, blank=True, db_index=True)
-    phone_number = models.CharField(verbose_name='Номер владельца', max_length=20, null=True, blank=True, db_index=True)
+    owner = models.TextField(
+        verbose_name='ФИО владельца',
+        null=True,
+        blank=True,
+        db_index=True
+    )
+    phone_number = models.CharField(
+        verbose_name='Номер владельца',
+        max_length=20, null=True,
+        blank=True, db_index=True
+    )
     normalaized_phone_number = PhoneNumberField(
         verbose_name='Нормализованный номер владельца',
         null=True,
         blank=True
     )
-    apartments_in_property = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', blank=True, related_name='owners')
+    apartments_in_property = models.ManyToManyField(
+        Flat,
+        verbose_name='Квартиры в собственности',
+        blank=True,
+        related_name='owners'
+    )
 
     def __str__(self):
         return f'Собственник: {self.owner}'
