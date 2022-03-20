@@ -92,3 +92,16 @@ class Claim(models.Model):
     def __str__(self):
         return f'Жалоба на квартиру {self.flat} от {self.author}'
 
+
+class Owner(models.Model):
+    owner = models.TextField(verbose_name='ФИО владельца', null=True, blank=True, db_index=True)
+    phone_number = models.CharField(verbose_name='Номер владельца', max_length=20, null=True, blank=True, db_index=True)
+    normalaized_phone_number = PhoneNumberField(
+        verbose_name='Нормализованный номер владельца',
+        null=True,
+        blank=True
+    )
+    apartments_in_property = models.ManyToManyField(User, verbose_name='Квартиры в собственности', blank=True, db_index=True)
+
+    def __str__(self):
+        return f'Квартиры в собственности {self.apartments_in_property} собственник {self.owner}'
