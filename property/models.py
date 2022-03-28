@@ -11,7 +11,8 @@ class Flat(models.Model):
     town = models.CharField(
         'Город, где находится квартира',
         max_length=50,
-        db_index=True)
+        db_index=True
+    )
     town_district = models.CharField(
         'Район города, где находится квартира',
         max_length=50,
@@ -44,14 +45,12 @@ class Flat(models.Model):
     )
     has_balcony = models.NullBooleanField('Наличие балкона', db_index=True)
     active = models.BooleanField('Активно-ли объявление', db_index=True)
-
     author_like = models.ManyToManyField(
         User,
         related_name='likes',
         verbose_name='Кто лайкнул',
         blank=True,
     )
-
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
