@@ -5,6 +5,14 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
+    owner = models.ForeignKey(
+        'Owner',
+        on_delete=models.CASCADE,
+        related_name='owners',
+        verbose_name='ФИО владельца',
+        default=""
+    )
+
     description = models.TextField('Текст объявления', blank=True)
     price = models.IntegerField('Цена квартиры', db_index=True)
     new_building = models.NullBooleanField(verbose_name='Новостройка', db_index=True)
