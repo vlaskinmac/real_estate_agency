@@ -89,8 +89,9 @@ class Claim(models.Model):
 
 
 class Owner(models.Model):
-    owner = models.TextField(
+    owner = models.CharField(
         verbose_name='ФИО владельца',
+        max_length=200,
         default="",
         blank=True,
         db_index=True
