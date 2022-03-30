@@ -91,18 +91,20 @@ class Claim(models.Model):
 class Owner(models.Model):
     owner = models.TextField(
         verbose_name='ФИО владельца',
-        null=True,
+        default="",
         blank=True,
         db_index=True
     )
     phone_number = models.CharField(
         verbose_name='Номер владельца',
-        max_length=20, null=True,
-        blank=True, db_index=True
+        max_length=20,
+        default="",
+        blank=True,
+        db_index=True
     )
     normalaized_phone_number = PhoneNumberField(
         verbose_name='Нормализованный номер владельца',
-        null=True,
+        default="",
         blank=True
     )
     apartments_in_property = models.ManyToManyField(
