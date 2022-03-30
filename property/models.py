@@ -10,7 +10,7 @@ class Flat(models.Model):
         on_delete=models.CASCADE,
         related_name='owners',
         verbose_name='ФИО владельца',
-        default=""
+        default="00000"
     )
 
     description = models.TextField('Текст объявления', blank=True)
