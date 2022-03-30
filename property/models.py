@@ -92,15 +92,11 @@ class Owner(models.Model):
     owner = models.CharField(
         verbose_name='ФИО владельца',
         max_length=200,
-        default="",
-        blank=True,
         db_index=True
     )
     phone_number = models.CharField(
         verbose_name='Номер владельца',
         max_length=20,
-        default="",
-        blank=True,
         db_index=True
     )
     normalaized_phone_number = PhoneNumberField(
