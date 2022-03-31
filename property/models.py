@@ -10,7 +10,7 @@ class Flat(models.Model):
         on_delete=models.CASCADE,
         related_name='owners',
         verbose_name='ФИО владельца',
-        default="00000"
+        default="0"
     )
 
     description = models.TextField('Текст объявления', blank=True)
@@ -101,7 +101,7 @@ class Owner(models.Model):
     )
     normalaized_phone_number = PhoneNumberField(
         verbose_name='Нормализованный номер владельца',
-        default="",
+        default="0",
         blank=True
     )
     apartments_in_property = models.ManyToManyField(
